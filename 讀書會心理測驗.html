@@ -39,12 +39,17 @@
   .question{margin-bottom:16px;padding-bottom:14px;border-bottom:1px dashed var(--border);}
   .question:last-child{border-bottom:none;}
   .q-text{font-size:15px;margin-bottom:8px;}
-  .options{display:flex;flex-wrap:wrap;gap:10px;}
+  .options{display:flex;flex-wrap:nowrap;gap:6px;}
   .options label{
-    display:flex;align-items:center;gap:6px;
+    display:flex;align-items:center;justify-content:center;gap:4px;
+    flex:1 1 0;min-width:0;
     background:#f6f5ef;border:1px solid var(--border);
-    border-radius:20px;padding:6px 12px;cursor:pointer;font-size:14px;
+    border-radius:20px;padding:6px 4px;cursor:pointer;font-size:14px;
     transition:background .15s,border-color .15s;
+  }
+  @media (max-width:420px){
+    .options{gap:4px;}
+    .options label{padding:5px 2px;font-size:12px;border-radius:14px;}
   }
   .options label:has(input:checked){
     background:var(--main);color:#fff;border-color:var(--main);
@@ -287,7 +292,7 @@ const test2Questions = [
 
 /* -------------------- 計分規則 -------------------- */
 function getTest1Level(score){
-  if(score >= 60) return {
+  if(score >= 73) return {
     level: "聖人心境（成熟期）",
     desc: "你的內在已逐漸以道為中心",
     traits: ["能放下自我","完全利益眾生","遇事先反求諸己","做事不求回報","心較安定自在"]
@@ -307,7 +312,7 @@ function getTest1Level(score){
 }
 
 function getTest2Level(score){
-  if(score >= 30) return {
+  if(score >= 33) return {
     level: "聖人心境",
     desc: "代表你大致上傾向以慈悲、包容與無私的角度看待每件事情，也能把眾人利益放在前面，不過這代表的是目前的心境傾向，真正的修持結果，還是要看將來是否能夠持續實踐"
   };
